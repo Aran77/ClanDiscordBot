@@ -97,6 +97,6 @@ async def on_message(message):
 
         
 #need to set up as application key 
-client.run('MTA2NzAwNDQ4NjE3MTc1ODY4Mg.GSm90K.3li6GRvD5gnsrOM11Eq2g00wfZnYrxagKfwmQY')
+client.run('INSERT DISCORD KEY')
 
 
