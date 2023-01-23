@@ -4,10 +4,11 @@ from threading import Thread
 from flask import Flask
 import bot as bot
 
+#set up basic flask app
 app = Flask(__name__)
 
-#t = Thread(target=bot.run)
-#t.start()
+t = Thread(target=bot.run)
+t.start()
 
 @app.route('/')
 def index():
