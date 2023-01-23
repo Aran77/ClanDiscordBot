@@ -30,6 +30,7 @@ def getDatafrom_API(members):
         if response.status_code == 200:
             #parse the resu
             data = response.json()
+            print(data)
             #loop the dictionary to find the data we want and save the data to a variable
             for statistic in data['playerStatistics']:
                 if statistic['statisticName'] == 'SeasonKills':
@@ -85,13 +86,17 @@ async def on_message(message):
            # msg += x['playerName'].ljust(30, ' ') + ",  {:.0f}".format(x['seasonGamesPlayed']) +"       , {:.2f}".format(x['seasonAVGKills']) +"       , {:.2f}".format(x['seasonAVGDamage']) +"       , {:.2f}".format(x['seasonAVGWins']) +"%\n"
             msg +="--------------------------------------------------------\n"
             msg += "Player: " +x['playerName'] +"\nGames Played This Season:  {:.0f}".format(x['seasonGamesPlayed'])+"\n"
-            msg += "Season Average Kills Per Game: {:.0f}".format(x['seasonAVGKills']) +"\nSeason Average Damage Per Game: {:.0f}".format(x['seasonAVGDamage'])+"\n"
+            msg += "Season Average Kills Per Game: {:.2f}".format(x['seasonAVGKills']) +"\nSeason Average Damage Per Game: {:.0f}".format(x['seasonAVGDamage'])+"\n"
             msg += "Season Win Ratio: {:.2f}".format(x['seasonAVGWins']) +"%\n\n"
             await message.channel.send(msg)
+    elif message.content.startswith('/insult'):
+        response = requests.get("https://insult.mattbas.org/api/insult?who"+ str(message.author))
+        if response.status_code == 200:
+            await message.channel.send(response.text)
 
 
         
 #need to set up as application key 
-client.run('')
+client.run('MTA2NzAwNDQ4NjE3MTc1ODY4Mg.GSm90K.3li6GRvD5gnsrOM11Eq2g00wfZnYrxagKfwmQY')
 
 
